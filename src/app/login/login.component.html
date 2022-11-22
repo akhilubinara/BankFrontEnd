@@ -1,0 +1,68 @@
+<script src="reg.js"></script>
+<style>
+    body{
+        background-image: url("../../assets/img/financial-banking-technology-concept_387612-31.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+    input{
+        width: 350px;
+        height: 40px;
+        margin-top: 10px;
+        border: 0;
+        background-color: rgba(255, 255, 255, 0);
+        border-bottom: 1px ridge rgb(43, 42, 42);
+    }
+    h1{
+        font-size: 30px;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 25px;
+        font-weight: 700;
+    }
+    .login{
+        text-align: center;
+        border: 1px solid rgba(19, 18, 18, 0.363);
+        box-shadow: 0 0 8px ;
+        width: 450px;
+        height: 500px;
+        padding: 40px;
+        margin: 100px;
+        border-radius: 10px;
+        transition-duration: 500ms;
+        transition-timing-function: ease-out;
+    }
+    img{
+        width: 100px;
+        display: block;
+        margin: auto;
+        margin-bottom: 10px;
+        border-radius: 50%;
+    }
+    a{
+        text-decoration: none;
+        font-weight: 600;
+    }
+    button{
+        width: 350px;
+        height: 40px;
+        margin-top: 10px;
+    }
+</style>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            <div class="login">
+                <img src="../../assets/img/bank-icon-white-background_539296-81.jpg" alt="">
+                <h1 class="text-center">BANK</h1>
+                <h6>{{aim}}</h6>
+                <input (change)="acnoChange($event)" type="text" id="log_acno" [placeholder]="account"><br>
+                <input (change)="pswdChange($event)" type="password" id="log_pass" placeholder="Password"><br>
+                <br><br><button type="button" class="btn btn-primary" (click)="Login()">Login</button><br>
+                <br><p>New User...?&nbsp;&nbsp;<a href="./reg.html">Sign Up</a></p>
+            </div>
+            
+        </div>
+        <div class="col"></div>
+        
+    </div>

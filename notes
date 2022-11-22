@@ -1,0 +1,41 @@
+                                ANGULAR
+    
+    Basic Building Blocks
+    
+    1) Module - To import 3rd party modules( Root modules) 
+    2) Component - To create html, css and ts file
+
+    Basic Commands 
+
+    1) ng new project_name
+    2) ng g c component_name
+    3) ng serve --open - To run Abgular file.
+
+    
+    Basic Concepts
+
+    1) Data Binding
+
+    Share data between components
+
+    ts  ---> component
+    html --> view
+
+        1. One wat Data Binding (1 direction)
+
+        ts --> html or html --> ts
+
+            1.1. Component to View
+
+            i. String interpolation (1 direction) - {{expression}}
+            ii. Property binding - [attribute name]="property"
+
+            1.2 View to Component
+
+            1. Event binding (1 direction) - (event_name)="function_name()";
+            ii. Event binding using $event (event_name)= "function_name($event)"
+
+
+
+
+        2. Two way data binding (2 direction)
