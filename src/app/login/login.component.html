@@ -56,9 +56,9 @@
                 <img src="../../assets/img/bank-icon-white-background_539296-81.jpg" alt="">
                 <h1 class="text-center">BANK</h1>
                 <h6>{{aim}}</h6>
-                <input (change)="acnoChange($event)" type="text" id="log_acno" [placeholder]="account"><br>
-                <input (change)="pswdChange($event)" type="password" id="log_pass" placeholder="Password"><br>
-                <br><br><button type="button" class="btn btn-primary" (click)="Login()">Login</button><br>
+                <input #acno type="text" id="log_acno" [placeholder]="account"><br>
+                <input #pswd type="password" id="log_pass" placeholder="Password"><br>
+                <br><br><button type="button" class="btn btn-primary" (click)="Login(acno,pswd)">Login</button><br>
                 <br><p>New User...?&nbsp;&nbsp;<a href="./reg.html">Sign Up</a></p>
             </div>
             

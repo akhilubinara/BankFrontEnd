@@ -37,10 +37,10 @@ export class LoginComponent implements OnInit {
   }
 
 
-  Login(){
+  Login(a:any,p:any){
     // alert("You Clicked");
-    var acno = this.acno;
-    var pswd = this.pswd;
+    var acno = a.value;
+    var pswd = p.value;
     if(acno in this.userDetails){
       if(pswd===this.userDetails[acno].password){
         alert('Login Successfull');
