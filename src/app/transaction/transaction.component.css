@@ -1,0 +1,13 @@
+table,tr,th,td{
+    border: 2px solid gray;
+    color: green;
+    margin: 50px auto;
+    padding: 10px 30px;
+}
+h1{
+    margin-top: 50px;
+    text-align: center;
+}
+img{
+    width: 30px;
+}

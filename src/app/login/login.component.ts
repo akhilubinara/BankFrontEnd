@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { DataService } from '../sevices/data.service';
 
 @Component({
   selector: 'app-login',
@@ -14,11 +17,16 @@ export class LoginComponent implements OnInit {
   acno='';
   pswd='';
 
-  userDetails:any = {
-    1000:{acno:1000,username:'Akhil',password:"akhilu",balance:25000},
-    1001:{acno:1001,username:'Anu',password:"Anu",balance:26000},
-    1002:{acno:1002,username:'akku',password:'akku',balance:1000}
-  }
+
+  //login model
+  loginForm = this.fb.group({
+    
+    acno:['',[Validators.required,Validators.pattern('[0-9]*')]],//array
+    pswd:['',[Validators.required,Validators.pattern('[a-zA-Z0-9]*')]]
+  })
+  //control - ts file model link to html file
+
+  
   // (3rd execution)
 //class - Collection of properties and methods
 //properties/variables
@@ -26,8 +34,8 @@ export class LoginComponent implements OnInit {
 
 // user defined methods (4th execution)
 
-
-  constructor() { //(1st Exection)
+//dependency injection
+  constructor(private ds:DataService, private router:Router,private fb:FormBuilder) { //(1st Exection)
     //it automatically invoked when the object is created.
    }
 
@@ -37,23 +45,54 @@ export class LoginComponent implements OnInit {
   }
 
 
-  Login(a:any,p:any){
-    // alert("You Clicked");
-    var acno = a.value;
-    var pswd = p.value;
-    if(acno in this.userDetails){
-      if(pswd===this.userDetails[acno].password){
-        alert('Login Successfull');
-      }
-      else{
+  // Login(a:any,p:any){
+  //   // alert("You Clicked");
+  //   var acno = a.value;
+  //   var pswd = p.value;
+  //   if(acno in this.userDetails){
+  //     if(pswd===this.userDetails[acno].password){
+  //       alert('Login Successfull');
+  //     }
+  //     else{
         
-        alert('Incorrect Password');
-      }
+  //       alert('Incorrect Password');
+  //     }
+  //   }
+  //   else{
+  //     alert('Invalid Account')
+  //   }
+    
+  // }
+  // acnoChange(event:any){
+  //   this.acno = event.target.value;
+  //   console.log(this.acno);
+    
+  // }
+  // pswdChange(event:any){
+  //   this.pswd = event.target.value;
+  //   console.log(this.pswd);
+    
+  // }
+  Login(){
+    // alert("You Clicked");
+    var acno = this.loginForm.value.acno;
+    var pswd = this.loginForm.value.pswd;
+    //var userDetails= this.ds.userDetails;
+
+    if(this.loginForm.valid){
+      var result = this.ds.login(acno,pswd);
+    if(result){
+      alert("Login Success");
+      this.router.navigateByUrl('dashboard');
     }
     else{
-      alert('Invalid Account')
+      alert("Login failed");
     }
-    
+    }
+    else{
+      alert("Ivalid Login")
+    }
+       
   }
   acnoChange(event:any){
     this.acno = event.target.value;

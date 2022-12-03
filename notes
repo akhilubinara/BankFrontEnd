@@ -39,4 +39,71 @@
 
 
 
-        2. Two way data binding (2 direction)
+        2. Two way data binding (2 direction) ts --> html , html --> ts
+
+            i. ngModel - formsModule in app.module.ts
+                -[(ngmodel)] = "property_name"
+
+    
+
+2. ---------- Angular Routing ------------
+
+    To set path for a component
+    
+    {
+        path:"value",component:class_name
+    }
+    eg:
+    login
+    {
+        path:'',component:LoginComponent        - (class_name)
+    },
+
+
+
+3. Dependency Injection
+
+    To share data between two dependent classes
+
+    constructor(private router:Router)
+
+    eg: router class - navigateByUrl() is used to vanigate the component
+
+
+4. Angular Services
+
+    To hold redundent data :  
+    
+    ng g s service_name  
+
+5. Angular Directives - To manipulate DOM
+
+a) Component Directives (array)
+b) structural Directives (table)
+    1) *ngFor
+    2) ngif
+
+6. Angular forms
+
+a) Template Driven forms(first design html page and cant do validation)
+b) Model Driven Forms (first design model in ts filr, Easy validation methods)
+    -Adnavced validation
+    1. Reactive Forms
+       form group, array, control
+       we can directly add validation via importing reactive form module
+
+7. Local Storage
+    -getItem - To retrive data
+    -setItem - To store data
+    -removeItem - To remove data
+
+8. Parent Child Communication
+
+    parent -> child
+    child -> parent
+
+    eg: 
+        Dashboard -- Parent
+        delete -- child
+
+    

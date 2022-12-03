@@ -1,19 +1,16 @@
-<!-- <style>
+<style>
     body{
         background-image: url("img/backgrounf");
         background-repeat: no-repeat;
         background-size: cover;
         background-attachment: fixed;
     }
-    h1{
-        color: azure;
-    }
     #login{
         text-align: center;
         margin-top: 100px;
-        width: 500px;
-        height: 400px;
-        background-color: rgba(7, 7, 7, 0.205);
+        width: 450px;
+        height: 500px;
+        background-color: rgb(255, 255, 255);
         border: 1px ridge rgba(87, 85, 85, 0.356);
         box-shadow: 0px 0px 15px;
         border-radius: 20px;
@@ -25,42 +22,48 @@
         border: 0;
         border-bottom: 2px ridge;
         background-color:rgba(255, 255, 255, 0);
-        
+    
     }
     .in, .btn{
         width: 350px;
         height: 35px;
         margin-top: 10px;
     }
-    a,p{
-        
-        text-decoration: none;
-        color: rgb(227, 231, 231);
-    }
     a{
+        text-decoration: none;
         font-weight: 600;
-        color: rgb(255, 255, 255);
+        color: rgb(88, 109, 230);
     }
-    #login:hover{
-
-        background-color: rgba(0, 0, 0, 0.781);
+    img{
+        width: 100px;
+    }
+    h2{
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: 800;
+        margin-top: 20px;
     }
 </style>
-
-<div class="row">
-    <div class="col"></div>
-    <div  class="col">
-        <div id="login"><br>
-            <h1>My Bank</h1><br>
-        <input class="in" type="text" id="uname" placeholder="Username"><br>
-        <input class="in" type="text" id="ac_no" placeholder="Account Number"><br>
-        <input class="in" type="password" id="pass" placeholder="Password"><br><br>
-        <button type="button" class="btn btn-primary" value="Register" onclick="Register()">Register</button><br>
-        <br>
-        <p>Already have an Account...?&nbsp;&nbsp;<a href="./index.html">Login</a></p>
-        
+<form [formGroup]="registerForm" >
+    <div class="row">
+        <div class="col"></div>
+        <div  class="col">
+            <div id="login"><br>
+                <img src="../../assets/img/bank-icon-white-background_539296-81.jpg" alt="">
+                <h2>MY BANK</h2><br>
+            <input class="in" formControlName="uname" type="text" placeholder="Username"><br>
+            <div *ngIf="this.registerForm.get('uname')?.errors && this.registerForm.get('uname')?.touched" style="color: red; margin: 0 60px;">Invalid Username. The username can only contain letters and numbers</div>
+            <input class="in" formControlName="acno" type="text" placeholder="Account Number"><br>
+            <div *ngIf="this.registerForm.get('acno')?.errors && this.registerForm.get('acno')?.touched" style="color: red; margin: 0 60px;">Invalid account Number. </div>
+            <input class="in" formControlName="pswd" type="password" placeholder="Password"><br><br>
+            <div *ngIf="this.registerForm.get('pswd')?.errors && this.registerForm.get('pswd')?.touched" style="color: red; margin: 0 60px;">?</div>
+            <button type="button" class="btn btn-primary" (click)="Register()">Register</button><br>
+            <br>
+            <p>Already have an Account...?&nbsp;&nbsp;<a routerLink="">Login</a></p>
+            
+            </div>
+            
         </div>
+        <div class="col"></div>
         
     </div>
-    
-</div> -->
+</form>

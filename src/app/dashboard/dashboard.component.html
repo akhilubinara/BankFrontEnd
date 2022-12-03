@@ -1,0 +1,96 @@
+
+        <script src="reg.js"></script>
+<style>
+    body{
+        background-image: url("../../assets/img/financial-banking-technology-concept_387612-31.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+    input{
+        width: 350px;
+        height: 40px;
+        margin-top: 10px;
+        border: 0;
+        background-color: rgba(255, 255, 255, 0);
+        border-bottom: 1px ridge rgb(43, 42, 42);
+    }
+    h1{
+        font-size: 30px;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 25px;
+        font-weight: 700;
+    }
+    .login{
+        text-align: center;
+        border: 1px solid rgba(19, 18, 18, 0.363);
+        box-shadow: 0 0 8px ;
+        width: 450px;
+        height: 500px;
+        padding: 40px;
+        margin: 100px;
+        border-radius: 10px;
+        
+    }
+    img{
+        width: 100px;
+        display: block;
+        margin: auto;
+        margin-bottom: 10px;
+        border-radius: 50%;
+    }
+    a{
+        text-decoration: none;
+        font-weight: 600;
+    }
+    button{
+        width: 350px;
+        height: 40px;
+        margin-top: 10px;
+    }
+    .row{
+        
+    }
+</style>
+    <div class="row">
+        <form [formGroup]="depositForm">
+                <button class="btn btn-warning" style="float: right;" (click)="Logout()">Logout</button>
+                <button class="btn btn-danger" style="float: right;" (click)="Delete()">Delete</button>
+                <div style="display: flex; justify-content: center;"><h1>Welcome {{user}},</h1></div>
+            <p>To view transaction History <a routerLink="/transaction">Click Here</a></p>
+            <div class="col">
+                <div class="login">
+                    <img src="../../assets/img/bank-icon-white-background_539296-81.jpg" alt="">
+                    <h1 class="text-center">Deposit</h1>
+                    <input formControlName = "acno" type="text"  placeholder="Account No."><br>
+                    <div *ngIf="this.depositForm.get('acno')?.errors && this.depositForm.get('acno')?.touched" style="color: red; margin: 0 60px;">Invalid account number.</div>
+                    <input formControlName= "pswd" type="password"  placeholder="Password"><br>
+                    <div *ngIf="this.depositForm.get('pswd')?.errors && this.depositForm.get('pswd')?.touched" style="color: red; margin: 0 60px;">Invalid password.</div>
+                    <input formControlName = "amount" type="text"  placeholder="Amount"><br>
+                    <div *ngIf="this.depositForm.get('amount')?.errors && this.depositForm.get('amount')?.touched" style="color: red; margin: 0 60px;">Invalid amount entered.</div>
+                    <br><br><button type="button" class="btn btn-primary" (click)="Deposit()">Deposit</button><br>
+                </div>
+            </div>
+        </form>
+        <div class="col"><br><br><br><br><br><br><br><br>
+            <input [(ngModel)] = "b_acno" type="text"  placeholder="Account No."><br>
+            <br><br><button type="button" class="btn btn-primary" (click)="balance()">Balance</button><br>
+        </div>
+        <form [formGroup]="withdrawForm">
+            <div class="col">
+                <div class="login">
+                    <img src="../../assets/img/bank-icon-white-background_539296-81.jpg" alt="">
+                    <h1 class="text-center">Withdraw</h1>
+                    <input formControlName = "w_acno" type="text"  placeholder="Account No."><br>
+                    <div *ngIf="this.withdrawForm.get('w_acno')?.errors && this.withdrawForm.get('w_acno')?.touched" style="color: red; margin: 0 60px;">Invalid account number.</div>
+                    <input formControlName = "w_pswd" type="password"  placeholder="Password"><br>
+                    <div *ngIf="this.withdrawForm.get('w_pswd')?.errors && this.withdrawForm.get('w_pswd')?.touched" style="color: red; margin: 0 60px;">Invalid password.</div>
+                    <input formControlName = "w_amount" type="text"  placeholder="Amount"><br>
+                    <div *ngIf="this.withdrawForm.get('w_amount')?.errors && this.withdrawForm.get('w_amount')?.touched" style="color: red; margin: 0 60px;">Invalid amount entered.</div>
+                    <br><br><button type="button" class="btn btn-primary" (click)="Withdraw()">Withdraw</button><br>
+                </div>
+            </div>
+        </form>
+    </div>
+    <app-delete></app-delete>
+    

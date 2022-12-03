@@ -49,6 +49,7 @@
         margin-top: 10px;
     }
 </style>
+<form [formGroup]="loginForm" >
     <div class="row">
         <div class="col"></div>
         <div class="col">
@@ -56,13 +57,16 @@
                 <img src="../../assets/img/bank-icon-white-background_539296-81.jpg" alt="">
                 <h1 class="text-center">BANK</h1>
                 <h6>{{aim}}</h6>
-                <input #acno type="text" id="log_acno" [placeholder]="account"><br>
-                <input #pswd type="password" id="log_pass" placeholder="Password"><br>
-                <br><br><button type="button" class="btn btn-primary" (click)="Login(acno,pswd)">Login</button><br>
-                <br><p>New User...?&nbsp;&nbsp;<a href="./reg.html">Sign Up</a></p>
+                <input formControlName = "acno" type="text"  [placeholder]="account"><br>
+                <div *ngIf="this.loginForm.get('acno')?.errors && this.loginForm.get('acno')?.touched" style="color: red; margin: 0 60px;">Invalid account number.</div>
+                <input formControlName= "pswd" type="password" placeholder="Password"><br>
+                <div *ngIf="this.loginForm.get('pswd')?.errors && this.loginForm.get('pswd')?.touched" style="color: red; margin: 0 60px;">Invalid password</div>
+                <br><br><button type="button" class="btn btn-primary" (click)="Login()">Login</button><br>
+                <br><p>New User...?&nbsp;&nbsp;<a routerLink="register">Sign Up</a></p>
             </div>
             
         </div>
         <div class="col"></div>
         
     </div>
+</form>
