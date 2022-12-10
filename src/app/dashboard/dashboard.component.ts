@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../sevices/data.service';
@@ -9,6 +9,9 @@ import { DataService } from '../sevices/data.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+
+  
+
 acno="";
 pswd="";
 amount="";
@@ -19,8 +22,7 @@ b_acno="";
 
 user = "";
 
-
-
+sdate:any;
 //deposit model
 depositForm = this.fb.group({
   amount:['',[Validators.required,Validators.pattern('[0-9]*')]],//array
@@ -37,6 +39,7 @@ withdrawForm = this.fb.group({
 //control - ts file model link to html file
   constructor(private ds:DataService, private fb:FormBuilder, private router:Router) {
     this.user = this.ds.currentUser;
+    this.sdate = new Date()
    }
 
   ngOnInit(): void {
@@ -103,6 +106,9 @@ Withdraw(){
     
   }
   Delete(){
-    
+      this.acno = JSON.parse(localStorage.getItem('currentAcno') || '')
+  }
+  onCancel(){
+    this.acno = '';
   }
 }

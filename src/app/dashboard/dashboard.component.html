@@ -1,11 +1,9 @@
 
         <script src="reg.js"></script>
 <style>
-    body{
-        background-image: url("../../assets/img/financial-banking-technology-concept_387612-31.jpg");
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-attachment: fixed;
+    *{
+        margin: 0;
+        padding: 0;
     }
     input{
         width: 350px;
@@ -43,22 +41,32 @@
         text-decoration: none;
         font-weight: 600;
     }
-    button{
+    .col button{
         width: 350px;
         height: 40px;
-        margin-top: 10px;
+        margin: 10px 0 0 0;
+    }
+    button{
+        width: 70px;
+        height: 40px;
+        margin: 30px;
     }
     .row{
         
     }
 </style>
-    <div class="row">
-        <form [formGroup]="depositForm">
-                <button class="btn btn-warning" style="float: right;" (click)="Logout()">Logout</button>
+<button class="btn btn-warning" style="float: right;" (click)="Logout()">Logout</button>
                 <button class="btn btn-danger" style="float: right;" (click)="Delete()">Delete</button>
                 <div style="display: flex; justify-content: center;"><h1>Welcome {{user}},</h1></div>
+                <h6>System date and time : {{sdate | date:'short'}}</h6><br><br><br>
             <p>To view transaction History <a routerLink="/transaction">Click Here</a></p>
-            <div class="col">
+            
+            <app-delete [item]="acno" (onCancel)="onCancel()"></app-delete>
+    <div class="row">
+        <div class="col">
+            <form [formGroup]="depositForm">
+                
+            <div [ngClass]="acno? 'style1' :'' ">
                 <div class="login">
                     <img src="../../assets/img/bank-icon-white-background_539296-81.jpg" alt="">
                     <h1 class="text-center">Deposit</h1>
@@ -72,25 +80,26 @@
                 </div>
             </div>
         </form>
-        <div class="col"><br><br><br><br><br><br><br><br>
-            <input [(ngModel)] = "b_acno" type="text"  placeholder="Account No."><br>
-            <br><br><button type="button" class="btn btn-primary" (click)="balance()">Balance</button><br>
         </div>
-        <form [formGroup]="withdrawForm">
-            <div class="col">
-                <div class="login">
-                    <img src="../../assets/img/bank-icon-white-background_539296-81.jpg" alt="">
-                    <h1 class="text-center">Withdraw</h1>
-                    <input formControlName = "w_acno" type="text"  placeholder="Account No."><br>
-                    <div *ngIf="this.withdrawForm.get('w_acno')?.errors && this.withdrawForm.get('w_acno')?.touched" style="color: red; margin: 0 60px;">Invalid account number.</div>
-                    <input formControlName = "w_pswd" type="password"  placeholder="Password"><br>
-                    <div *ngIf="this.withdrawForm.get('w_pswd')?.errors && this.withdrawForm.get('w_pswd')?.touched" style="color: red; margin: 0 60px;">Invalid password.</div>
-                    <input formControlName = "w_amount" type="text"  placeholder="Amount"><br>
-                    <div *ngIf="this.withdrawForm.get('w_amount')?.errors && this.withdrawForm.get('w_amount')?.touched" style="color: red; margin: 0 60px;">Invalid amount entered.</div>
-                    <br><br><button type="button" class="btn btn-primary" (click)="Withdraw()">Withdraw</button><br>
+        
+        <div class="col">
+            <form [formGroup]="withdrawForm">
+                <div [ngClass]="acno? 'style1' :'' " >
+                    <div class="login">
+                        <img src="../../assets/img/bank-icon-white-background_539296-81.jpg" alt="">
+                        <h1 class="text-center">Withdraw</h1>
+                        <input formControlName = "w_acno" type="text"  placeholder="Account No."><br>
+                        <div *ngIf="this.withdrawForm.get('w_acno')?.errors && this.withdrawForm.get('w_acno')?.touched" style="color: red; margin: 0 60px;">Invalid account number.</div>
+                        <input formControlName = "w_pswd" type="password"  placeholder="Password"><br>
+                        <div *ngIf="this.withdrawForm.get('w_pswd')?.errors && this.withdrawForm.get('w_pswd')?.touched" style="color: red; margin: 0 60px;">Invalid password.</div>
+                        <input formControlName = "w_amount" type="text"  placeholder="Amount"><br>
+                        <div *ngIf="this.withdrawForm.get('w_amount')?.errors && this.withdrawForm.get('w_amount')?.touched" style="color: red; margin: 0 60px;">Invalid amount entered.</div>
+                        <br><br><button type="button" class="btn btn-primary" (click)="Withdraw()">Withdraw</button><br>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
+        
     </div>
-    <app-delete></app-delete>
+    
     
